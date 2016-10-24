@@ -16,12 +16,12 @@ public class AppointmentBean {
     
     public List<Appointment> getAllAppointments(String email)
     {
-        TypedQuery<People> people = em.createQuery("select p from Person p where p.email = :email", People.class);
+        TypedQuery<People> people = em.createQuery("select p.appointments from Person p where p.email = :email", People.class);
         people.setParameter("email", email);
-        People p = people.getResultList().get(0);
-        TypedQuery<Appointment> appts = em.createQuery("select a from appointment a where a.people = :people",Appointment.class);
-        appts.setParameter("people", people);
-        List<Appointment> appt = appts.getResultList();
+//        People p = people.getResultList().get(0);
+//        TypedQuery<Appointment> appts = em.createQuery("select a from appointment a where a.people = :people",Appointment.class);
+//        appts.setParameter("people", people);
+        List<Appointment> appt = (List<Appointment>) people.getResultList().get(0).getAppointments();
         return appt;
     }
     
