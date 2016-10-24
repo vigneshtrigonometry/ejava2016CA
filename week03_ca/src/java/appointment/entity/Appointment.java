@@ -21,7 +21,7 @@ public class Appointment{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String appt_id;
+    private int appt_id;
     
     @Lob
     private String description;
@@ -32,11 +32,11 @@ public class Appointment{
     @JoinColumn(name = "pid" , referencedColumnName = "pid")
     private People people;
 
-    public String getAppt_id() {
+    public int getAppt_id() {
         return appt_id;
     }
 
-    public void setAppt_id(String appt_id) {
+    public void setAppt_id(int appt_id) {
         this.appt_id = appt_id;
     }
 
