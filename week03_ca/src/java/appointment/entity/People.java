@@ -16,7 +16,7 @@ public class People {
     
     private String email;
     
-    @OneToMany
+    @OneToMany(mappedBy = "people")
     private Collection<Appointment> appointments;
 
     public String getPid() {
