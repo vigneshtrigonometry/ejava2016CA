@@ -29,7 +29,6 @@ import javax.ws.rs.core.Response;
 public class PeopleResource {
     
     @EJB private PeopleBean peopleBean;
-    @EJB private AppointmentBean appointmentBean;
     @Resource(lookup = "concurrent/ejavaca1mes")
     private ManagedExecutorService service;
     
@@ -53,17 +52,12 @@ public class PeopleResource {
     @Produces("application/json")
     public Response getAppointments(@QueryParam("email") String email)
     {
-        List<Appointment> appts = appointmentBean.getAllAppointments(email);
-        
-        JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
-        for(Appointment a:appts)
+        if(peopleBean.findByEmail(email).isPresent())
         {
-            JsonObjectBuilder objBuilder = Json.createObjectBuilder();
-            objBuilder.add("appointmentId", a.getAppt_id()).add("dateTime", a.getAppt_date().toString())
-                    .add("description", a.getDescription()).add("personId", a.getPeople().getPid());
-            arrBuilder.add(objBuilder);
+            return Response.ok().build();
         }
-        return Response.ok(arrBuilder.build()).build();
+        return Response.status(Response.Status.NOT_FOUND).build();
+
     }
     
 }

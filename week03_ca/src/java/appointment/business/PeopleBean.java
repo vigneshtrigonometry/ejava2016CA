@@ -2,10 +2,12 @@
 package appointment.business;
 
 import appointment.entity.People;
+import java.util.Optional;
 import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class PeopleBean {
@@ -20,5 +22,12 @@ public class PeopleBean {
         p.setName(name);
         p.setEmail(email);
         em.persist(p);
+    }
+    
+    public Optional<People> findByEmail(String email)
+    {
+        TypedQuery<People> query = em.createQuery("select p from People p where p.email = :email", People.class);
+        query.setParameter("email", email);
+        return Optional.ofNullable(query.getResultList().get(0));
     }
 }
