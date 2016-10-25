@@ -11,12 +11,13 @@ import javax.ws.rs.core.Response;
 public class AddPersonTask implements Runnable {
 
     private String name, email;
-    private AsyncContext ctx;
-    @EJB PeopleBean peopleBean;
-    public AddPersonTask(String name, String email, AsyncContext ctx) {
+    private AsyncResponse resp;
+    private PeopleBean peopleBean;
+    public AddPersonTask(String name, String email, AsyncResponse resp, PeopleBean peopleBean) {
         this.name = name;
         this.email = email;
-        this.ctx = ctx;
+        this.resp = resp;
+        this.peopleBean = peopleBean;
     }
 
     
@@ -25,13 +26,13 @@ public class AddPersonTask implements Runnable {
         try
         {
             peopleBean.addPeople(name, email);
-            Response resp = Response.ok().build();
-            ctx.complete();
+            Response respon = Response.ok().build();
+            resp.resume(respon);
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            ctx.complete();
+            resp.cancel();
         }
         
     }
