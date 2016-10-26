@@ -5,6 +5,7 @@ import appointment.business.AppointmentBean;
 import appointment.business.PeopleBean;
 import appointment.entity.Appointment;
 import appointment.tasks.AddPersonTask;
+import appointment.tasks.RetreiveAppointmentsTask;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -29,6 +30,7 @@ import javax.ws.rs.core.Response;
 public class PeopleResource {
     
     @EJB private PeopleBean peopleBean;
+    @EJB private AppointmentBean appointmentBean;
     @Resource(lookup = "concurrent/ejavaca1mes")
     private ManagedExecutorService service;
     
@@ -50,8 +52,9 @@ public class PeopleResource {
     
     @GET
     @Produces("application/json")
-    public Response getAppointments(@QueryParam("email") String email)
+    public Response getAppointments(@QueryParam("email") String email, @Suspended final AsyncResponse async)
     {
+                
         if(peopleBean.findByEmail(email).isPresent())
         {
             return Response.ok().build();
