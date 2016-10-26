@@ -2,6 +2,7 @@
 package appointment.business;
 
 import appointment.entity.People;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import javax.ejb.Stateless;
@@ -24,10 +25,20 @@ public class PeopleBean {
         em.persist(p);
     }
     
-    public Optional<People> findByEmail(String email)
+    public People findByEmail(String email)
     {
+        try{
         TypedQuery<People> query = em.createQuery("select p from People p where p.email = :email", People.class);
         query.setParameter("email", email);
-        return Optional.ofNullable(query.getResultList().get(0));
+        List<People> pList = query.getResultList();
+        return pList.isEmpty()? null:pList.get(0);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+            
+        }
+       
     }
 }
