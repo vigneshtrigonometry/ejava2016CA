@@ -38,7 +38,7 @@ public class AppointmentResource {
     public void getAppointments(@PathParam("email") String email, @Suspended final AsyncResponse resp)
     {
         RetreiveAppointmentsTask task = new RetreiveAppointmentsTask(email, resp, appointmentBean);
-        service.execute(task);
+        service.submit(task);
     }
     
 }

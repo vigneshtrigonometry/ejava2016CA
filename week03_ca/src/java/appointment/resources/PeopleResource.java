@@ -51,8 +51,7 @@ public class PeopleResource {
     }
     
     @GET
-    @Produces("application/json")
-    public Response getAppointments(@QueryParam("email") String email, @Suspended final AsyncResponse async)
+    public Response getAppointments(@QueryParam("email") String email)
     {
                 
         if(peopleBean.findByEmail(email).isPresent())

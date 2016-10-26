@@ -12,6 +12,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -32,8 +33,7 @@ public class RetreiveAppointmentsTask implements Runnable{
     
     @Override
     public void run() {
-                List<Appointment> appts = appointmentBean.getAllAppointments(email);
-        
+        List<Appointment> appts = appointmentBean.getAllAppointments(email);
         JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
         for(Appointment a:appts)
         {
@@ -42,7 +42,8 @@ public class RetreiveAppointmentsTask implements Runnable{
                     .add("description", a.getDescription()).add("personId", a.getPeople().getPid());
             arrBuilder.add(objBuilder);
         }
-        resp.resume(Response.ok(arrBuilder.build()).build());
+        Response respo = Response.ok(arrBuilder.build(),MediaType.APPLICATION_JSON).build();
+        resp.resume(respo);
     }
     
 }
