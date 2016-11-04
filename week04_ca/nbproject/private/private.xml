@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/notice.xhtml</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/secure/mynotices.xhtml</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/src/java/board/view/NoticeBean.java</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/template.xhtml</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/resources/css/bootstrap.css</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/index.xhtml</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/src/java/board/view/NoticeSocketEndPoint.java</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/viewnotice.xhtml</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/src/java/board/business/NoticeManager.java</file>
+            <file>file:/C:/Users/vigne/Documents/NetBeansProjects/RTNoticeBoard/web/secure/addnotice.xhtml</file>
+        </group>
+    </open-files>
+</project-private>
