@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Delivery and PODs</title>
+    </h:head>
+    <h:body>
+        <h1> Delivery Table</h1>
+        <h:dataTable var="del" value="#{deliveryandpodsView.deliveryList}" border="1">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{del.pkgId}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{del.name}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                #{del.address}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Phone no.</f:facet>
+                #{del.phone}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Date Created</f:facet>
+                #{del.createDate}
+            </h:column>
+        </h:dataTable>
+        <br/>
+        <h1> POD Table</h1>
+        <h:dataTable var="pod" value="#{deliveryandpodsView.podList}" border="1">
+            <h:column>
+                <f:facet name="header">POD Id</f:facet>
+                #{pod.podId}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Image</f:facet>
+                #{pod.image}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Note</f:facet>
+                #{pod.note}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Package ID</f:facet>
+                #{pod.pkg.pkgId}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Acknowledge ID</f:facet>
+                #{pod.ackId}
+            </h:column>
+        </h:dataTable>
+        <br/>
+        <h:form>
+            <h:commandLink action="index" value="Back to Main Page"/>
+        </h:form>
+    </h:body>
+</html>
+
